@@ -18,7 +18,6 @@ public class Bank {
         this.bankName = name;
     }
 
-    // All good
     public void readData(String filePath) {
         Scanner in = null;
         try {
@@ -59,7 +58,6 @@ public class Bank {
         }
     }
 
-    /// All good
     public void bankInfo() {
         System.out.printf("Bank Name: %s\n", bankName);
         System.out.printf("Number of Customers: %d\n", customers.size());
@@ -71,7 +69,6 @@ public class Bank {
         System.out.printf("Total Balance: $%.2f\n", totalBalance);
     }
 
-    //
     public void accountInfo(int accountNumber) {
         for (var account : accounts) {
             if (account.getAccountNumber() == accountNumber) {
@@ -122,57 +119,6 @@ public class Bank {
         if (!found) {
             System.out.printf("\t- No transaction for account %d\n", accountNumber);
         }
-    }
-
-    private static void demo1() {
-        Bank csumbBank = new Bank("CSUMB");
-        System.out.println("=== READ DATA ===");
-        csumbBank.readData("/Users/lvill/dev/Java/CST338-03/src/Projects/Project1/resources/test1.txt");
-        System.out.println("=== DONE ===");
-        System.out.println("\n=== BANK INFORMATION ===");
-        csumbBank.bankInfo();
-        System.out.println("\n=== ACCOUNT INFORMATION ===");
-        csumbBank.accountInfo(1000);
-        csumbBank.deposit(1000, 150.25);
-        System.out.println("\n=== ACCOUNT INFORMATION ===");
-        csumbBank.accountInfo(1000);
-        csumbBank.withdraw(1000, 100);
-        System.out.println("\n=== ACCOUNT INFORMATION ===");
-        csumbBank.accountInfo(1000);
-        System.out.println("\n=== ACCOUNT CLOSE ===");
-        if (csumbBank.closeAccount(1000)) {
-            System.out.println("Account closed.");
-        }
-        System.out.println("\n=== TRANSACTION INFO ===");
-        csumbBank.transaction(1000);
-        System.out.println("\n=== TRANSACTION INFO ===");
-        csumbBank.transaction(2000);
-    }
-
-    private static void demo2() {
-        Bank csumbBank = new Bank("CSUMB");
-        csumbBank.readData("/Users/lvill/dev/Java/CST338-03/src/Projects/Project1/resources/test1.txt");
-        System.out.println("=== NEW CUSTOMERS ===");
-        csumbBank.newCustomer("Bob Smith", "123 University Center", 93955, "123-45-6789");
-        csumbBank.newCustomer("Unknown Smith", "123 University Center", 93955, "777-77-7777");
-        System.out.println("\n=== NEW ACCOUNTS ===");
-        csumbBank.newAccount("777-77-7777", 4000, 1, 100.50);
-        csumbBank.newAccount("123-45-7777", 2000, 1, 100.50);
-        csumbBank.newAccount("123-45-7777", 4000, 1, 100.50);
-        System.out.println("\n=== ACCOUNT INFO ===");
-        csumbBank.accountInfo(7000);
-        System.out.println("\n=== CUSTOMER WITH LAST FOUR DIGIT SSN ===");
-        csumbBank.customerInfoWithSSN(7979);
-        System.out.println("\n=== CUSTOMER WITH SSN 7777 ===");
-        csumbBank.customerInfoWithSSN(7777);
-        System.out.println("\n=== CUSTOMER WITH SSN 6789 ===");
-        csumbBank.customerInfoWithSSN(6789);
-        // We try to close the account 2000.
-        csumbBank.closeAccount(2000);
-        System.out.println("\n=== REMOVE CUSTOMER: 555-55-5555 ===");
-        csumbBank.removeCustomer("555-55-5555");
-        System.out.println("\n=== REMOVE CUSTOMER: 777-77-7777 ===");
-        csumbBank.removeCustomer("777-77-7777");
     }
 
     private void removeCustomer(String ssn) {
@@ -271,9 +217,5 @@ public class Bank {
         }
         customers.add(new Customer(name, address, zip, ssn));
         System.out.printf("%s is added.\n", name);
-    }
-
-    public static void main(String[] args) {
-        demo2();
     }
 }
