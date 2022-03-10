@@ -18,6 +18,7 @@ public class Bank {
         this.bankName = name;
     }
 
+    // All good
     public void readData(String filePath) {
         Scanner in = null;
         try {
@@ -58,6 +59,7 @@ public class Bank {
         }
     }
 
+    /// All good
     public void bankInfo() {
         System.out.printf("Bank Name: %s\n", bankName);
         System.out.printf("Number of Customers: %d\n", customers.size());
@@ -69,6 +71,7 @@ public class Bank {
         System.out.printf("Total Balance: $%.2f\n", totalBalance);
     }
 
+    //
     public void accountInfo(int accountNumber) {
         for (var account : accounts) {
             if (account.getAccountNumber() == accountNumber) {
@@ -165,11 +168,34 @@ public class Bank {
         System.out.println("\n=== CUSTOMER WITH SSN 6789 ===");
         csumbBank.customerInfoWithSSN(6789);
         // We try to close the account 2000.
-//        csumbBank.closeAccount(2000);
-//        System.out.println("\n=== REMOVE CUSTOMER: 555-55-5555 ===");
-//        csumbBank.removeCustomer("555-55-5555");
-//        System.out.println("\n=== REMOVE CUSTOMER: 777-77-7777 ===");
-//        csumbBank.removeCustomer("777-77-7777");
+        csumbBank.closeAccount(2000);
+        System.out.println("\n=== REMOVE CUSTOMER: 555-55-5555 ===");
+        csumbBank.removeCustomer("555-55-5555");
+        System.out.println("\n=== REMOVE CUSTOMER: 777-77-7777 ===");
+        csumbBank.removeCustomer("777-77-7777");
+    }
+
+    private void removeCustomer(String ssn) {
+        for (var customer : customers) {
+            if (customer.getSocialSecurity().equals(ssn)) {
+                customers.remove(customer);
+                System.out.printf("Customer removed - SSN: %s, Customer: %s\n", ssn, customer);
+
+                Account account = null;
+                for (var acc : accounts) {
+                    if (acc.getCustomer().getSocialSecurity().equals(ssn)) {
+                        account = acc;
+                        break;
+                    }
+                }
+                if (account != null) {
+                    System.out.printf("Account closed - Number: %d, Balance: %.2f\n", account.getAccountNumber(), account.getBalance());
+                    accounts.remove(account);
+                }
+                return;
+            }
+        }
+        System.out.println("Customer remove failed. SSN does not exist.");
     }
 
     private void customerInfoWithSSN(int ssn) {
@@ -204,7 +230,6 @@ public class Bank {
     }
 
     private void newAccount(String ssn, int id, int type, double amount) {
-        // Fails if user already has an account of type `type`.
         for (var acc: accounts) {
             if (acc.getSocialSecurity().equals(ssn)) {
                 if (type == 1 && acc.hasCheckingAccount()) {
@@ -219,7 +244,6 @@ public class Bank {
             }
         }
 
-        // Fails if account number is already in use.
         for (var acc: accounts) {
             if (acc.getAccountNumber() == id) {
                 System.out.printf("Account creation failed - Account %d already exists\n", id);
@@ -249,7 +273,6 @@ public class Bank {
         System.out.printf("%s is added.\n", name);
     }
 
-    // Sample runs
     public static void main(String[] args) {
         demo2();
     }

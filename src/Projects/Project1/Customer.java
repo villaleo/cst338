@@ -1,9 +1,6 @@
 package Projects.Project1;
 
 public class Customer {
-    // TODO: Each Customer can have a maximum of two Accounts (= one checking and
-    //  one savings account) and accounts cannot be shared between customers.
-
     private String name;
     private String address;
     private int zipCode;
