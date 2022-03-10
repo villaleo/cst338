@@ -170,17 +170,6 @@ public class Bank {
 //        csumbBank.removeCustomer("555-55-5555");
 //        System.out.println("\n=== REMOVE CUSTOMER: 777-77-7777 ===");
 //        csumbBank.removeCustomer("777-77-7777");
-
-        // todo: remove
-//        System.out.println("Accounts::");
-//        for (var account : csumbBank.accounts) {
-//            System.out.println(account + " " + String.format("c[%b] & s[%b]", account.hasCheckingAccount(), account.hasSavingAccount()));
-//        }
-//        System.out.println();
-//        System.out.println("Customers::");
-//        for (var customer : csumbBank.customers) {
-//            System.out.println(customer);
-//        }
     }
 
     private void customerInfoWithSSN(int ssn) {
@@ -192,31 +181,19 @@ public class Bank {
                 System.out.printf("%s, %d\n", cust.getAddress(), cust.getZipCode());
                 System.out.printf("SSN: %s\n", cust.getSocialSecurity());
 
-                Account tempAccount = null;
                 for (var acc: accounts) {
                     if (acc.getCustomer().getSocialSecurity().equals(cust.getSocialSecurity())) {
-                        tempAccount = acc;
+                        if (acc.hasCheckingAccount()) {
+                            System.out.printf("Checking (%d), $%.2f\n", acc.getAccountNumber(), acc.getBalance());
+                        }
+                        if (acc.hasSavingAccount()) {
+                            System.out.printf("Savings (%d), $%.2f\n", acc.getAccountNumber(), acc.getBalance());
+                        }
+                        if (! acc.hasCheckingAccount() && ! acc.hasSavingAccount()) {
+                            System.out.println("No accounts");
+                        }
                     }
                 }
-
-                // todo: remove this
-//                System.out.printf("acc{%s}", tempAccount == null? "null" : tempAccount.getAccountNumber());
-//                System.out.printf("checking{%s} & savings{%s}\n",
-//                        tempAccount == null? "null" : tempAccount.hasCheckingAccount(),
-//                        tempAccount == null? "null" : tempAccount.hasSavingAccount());
-
-                if (tempAccount != null) {
-                    if (tempAccount.hasCheckingAccount()) {
-                        System.out.printf("Checking (%d), $%.2f\n", tempAccount.getAccountNumber(), tempAccount.getBalance());
-                    }
-                    if (tempAccount.hasSavingAccount()) {
-                        System.out.printf("Savings (%d), $%.2f\n", tempAccount.getAccountNumber(), tempAccount.getBalance());
-                    }
-                    if (! tempAccount.hasCheckingAccount() && ! tempAccount.hasSavingAccount()) {
-                        System.out.println("No accounts");
-                    }
-                }
-
                 found = true;
             }
         }
