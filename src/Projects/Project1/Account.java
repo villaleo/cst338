@@ -1,3 +1,12 @@
+/**
+ * Title: Account.java
+ * Abstract: This class simulates an account. Each account has a unique number, a type,
+ *           balance, and so on. Available methods are only accessors and mutators to
+ *           instance variables.
+ * Author: Leonardo Villalobos
+ * Date: 03/11/22
+ */
+
 package Projects.Project1;
 
 public class Account {

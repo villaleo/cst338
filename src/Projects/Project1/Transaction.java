@@ -1,3 +1,12 @@
+/**
+ * Title: Transaction.java
+ * Abstract: This class simulates a Transaction. Each transaction contains the account number,
+ *           transaction type, amount, and the time of the transaction itself. Available methods
+ *           are instance variable accessors.
+ * Author: Leonardo Villalobos
+ * Date: 03/11/22
+ */
+
 package Projects.Project1;
 
 import java.time.LocalDateTime;

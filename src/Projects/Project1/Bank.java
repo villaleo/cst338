@@ -1,3 +1,11 @@
+/**
+ * Title: Bank.java
+ * Abstract: This class simulates a bank. The bank tracks the accounts, transactions,
+ *           customers, and bank name.
+* Author: Leonardo Villalobos
+ * Date: 03/11/22
+ */
+
 package Projects.Project1;
 
 import java.io.FileInputStream;

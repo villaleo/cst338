@@ -1,3 +1,11 @@
+/**
+ * Title: Customer.java
+ * Abstract: This class simulates a Customer. Each customer has a name, address, zip code,
+ *           and social security. Available methods are only accessors.
+ * Author: Leonardo Villalobos
+ * Date: 03/11/22
+ */
+
 package Projects.Project1;
 
 public class Customer {
