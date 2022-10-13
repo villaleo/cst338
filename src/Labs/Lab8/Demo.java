@@ -1,11 +1,33 @@
 package Labs.Lab8;
 
-public class Demo {
+class CircularQueueDemo {
     public static void main(String[] args) {
-        //
-    }
+        var circle = new CircularQueue(5);
 
-    public static void dynamic(String[] args) {
+        System.out.println("Create queue size 5.\n");
+        System.out.println("Add A-E");
+        for (char c = 'A'; c <= 'E'; c++) {
+            circle.put(c);
+        }
+        // Display queue
+        System.out.println(circle);
+
+        System.out.println("Add F-I");
+        for (char c = 'F'; c <= 'I'; c++) {
+            circle.put(c);
+        }
+        // Display queue
+        System.out.println(circle);
+
+        System.out.println("Remove 3 times and display what's returned:");
+        for (int i = 0; i < 3; i++) {
+            System.out.println(circle.get());
+        }
+    }
+}
+
+class DynamicQueueDemo {
+    public static void main(String[] args) {
         var a = new DynamicQ(5);
         var b = new DynamicQ(7);
 
@@ -18,7 +40,10 @@ public class Demo {
         }
     }
 
-    public static void fixed(String[] args) {
+}
+
+class FixedQueueDemo {
+    public static void main(String[] args) {
         FixedCharQ bigQ = new FixedCharQ(100);
         FixedCharQ smallQ = new FixedCharQ(4);
         char ch;
